@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/sps-game")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SpsGameController {
 
     SpsGameService spsGameService;
@@ -17,14 +20,14 @@ public class SpsGameController {
         this.spsGameService = spsGameService;
     }
 
-    @GetMapping
-    public String getNpcChoice() {
-        return spsGameService.getNpcChoice();
-    }
-
     @GetMapping("/game/{spsGameId}")
     public ResponseEntity<SpsGame> getSpsGameById(@PathVariable Long spsGameId) {
         return ResponseEntity.ok(spsGameService.getSpsGameById(spsGameId));
+    }
+
+    @GetMapping("/game")
+    public ResponseEntity<List<SpsGame>> getAllSpsGames() {
+        return ResponseEntity.ok(spsGameService.getAllSpsGames());
     }
 
     @PostMapping

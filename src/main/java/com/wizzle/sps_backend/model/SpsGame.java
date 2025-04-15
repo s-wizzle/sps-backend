@@ -18,6 +18,7 @@ public class SpsGame {
     private Instant updatedAt;
     private String playerName;
     private String playerChoice;
+    private GameMode mode;
     private String result;
     private String npcChoice;
 }

@@ -5,14 +5,13 @@ import com.wizzle.sps_backend.repository.SpsGameRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Random;
 
 @Service
 public class SpsGameServiceImpl implements SpsGameService {
 
     SpsGameRepository spsGameRepository;
-
-    private static final String[] CHOICES = {"rock", "paper", "scissors"};
     private final Random random = new Random();
 
     public SpsGameServiceImpl(SpsGameRepository spsGameRepository) {
@@ -20,9 +19,8 @@ public class SpsGameServiceImpl implements SpsGameService {
     }
 
     @Override
-    public String getNpcChoice() {
-        int index = random.nextInt(CHOICES.length);
-        return CHOICES[index];
+    public List<SpsGame> getAllSpsGames() {
+        return spsGameRepository.findAll();
     }
 
     @Override
