@@ -55,6 +55,7 @@ public class SpsGameServiceImpl implements SpsGameService {
 
         existingSpsGame.setPlayerName(spsGame.getPlayerName());
         existingSpsGame.setPlayerChoice(spsGame.getPlayerChoice());
+        existingSpsGame.setMode(spsGame.getMode());
         existingSpsGame.setResult(spsGame.getResult());
         existingSpsGame.setNpcChoice(spsGame.getNpcChoice());
         existingSpsGame.setUpdatedAt(spsGame.getUpdatedAt());
