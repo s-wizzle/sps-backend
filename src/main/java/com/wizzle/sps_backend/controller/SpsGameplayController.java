@@ -2,27 +2,27 @@ package com.wizzle.sps_backend.controller;
 
 import com.wizzle.sps_backend.model.GameMode;
 import com.wizzle.sps_backend.model.SpsGame;
-import com.wizzle.sps_backend.service.GameService;
+import com.wizzle.sps_backend.service.SpsGameplayService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/game")
+@RequestMapping("/api/sps-gameplay")
 @CrossOrigin(origins = "http://localhost:4200")
-public class GameController {
-    private final GameService gameService;
+public class SpsGameplayController {
+    private final SpsGameplayService gameService;
 
-    public GameController(GameService gameService) {
+    public SpsGameplayController(SpsGameplayService gameService) {
         this.gameService = gameService;
     }
 
-    @GetMapping("/npc-choice")
+    @GetMapping("/npc/choice")
     public String getNpcChoice(@RequestParam GameMode mode) {
-        return gameService.getNpcChoice(mode);
+        return gameService.generateNpcChoice(mode);
     }
 
-    @PatchMapping("/result")
+    @PatchMapping("/round/result")
     public ResponseEntity<SpsGame> updateResult(@RequestBody SpsGame game) {
-        return ResponseEntity.ok(gameService.calculateResult(game));
+        return ResponseEntity.ok(gameService.determineGameResult(game));
     }
 }
