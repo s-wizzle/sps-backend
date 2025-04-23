@@ -1,5 +1,6 @@
 package com.wizzle.sps_backend.controller;
 
+import com.wizzle.sps_backend.model.ChoiceResponse;
 import com.wizzle.sps_backend.model.GameMode;
 import com.wizzle.sps_backend.model.SpsGame;
 import com.wizzle.sps_backend.service.SpsGameplayService;
@@ -17,8 +18,9 @@ public class SpsGameplayController {
     }
 
     @GetMapping("/npc/choice")
-    public String getNpcChoice(@RequestParam GameMode mode) {
-        return gameService.generateNpcChoice(mode);
+    public ChoiceResponse getNpcChoice(@RequestParam GameMode mode) {
+        String result = gameService.generateNpcChoice(mode);
+        return new ChoiceResponse(result);
     }
 
     @PatchMapping("/round/result")
