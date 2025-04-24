@@ -53,7 +53,7 @@ public class SpsGameManagementServiceImpl implements SpsGameManagementService {
     }
 
     @Override
-    @org.springframework.transaction.annotation.Transactional
+    @Transactional
     public void deleteGame(Long spsGameId) {
         var existingSpsGame = findGameOrThrow(spsGameId);
         spsGameRepository.delete(existingSpsGame);
